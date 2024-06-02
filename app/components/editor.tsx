@@ -8,9 +8,9 @@ import {
   useRef,
   useState,
 } from "react";
-import { codeToHtml } from "shiki";
 import EditorHeader from "./editor-header";
 import { LangContext } from "../providers/lang-provider";
+import { codeToHtml } from "shiki/bundle/web";
 
 const Editor = () => {
   const [value, setValue] = useState("");
