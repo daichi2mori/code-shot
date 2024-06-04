@@ -11,6 +11,7 @@ import {
 import EditorHeader from "./editor-header";
 import { LangContext } from "../providers/lang-provider";
 import { codeToHtml } from "shiki/bundle/web";
+import { transformerLineNumbers } from "@/lib/shiki-line-number";
 
 const Editor = () => {
   const [value, setValue] = useState("");
@@ -46,14 +47,12 @@ const Editor = () => {
   useEffect(() => {
     codeToHtml(value, {
       lang,
-      themes: {
-        dark: "dark-plus",
-        light: "dark-plus",
-      },
+      theme: "dark-plus",
       defaultColor: false,
       meta: {
         tabindex: "-1",
       },
+      // transformers: [transformerLineNumbers()],
     }).then((res) => setHtml(res));
   }, [value, lang]);
 
@@ -73,9 +72,9 @@ const Editor = () => {
   return (
     <div
       id="canvas"
-      className="aspect-video w-full grid place-items-center bg-gradient-to-r from-sky-500 to-indigo-500"
+      className="aspect-video w-full p-4 md:p-12 md:max-w-[700px] lg:max-w-[1000px] grid place-items-center bg-gradient-to-r from-sky-500 to-indigo-500"
     >
-      <div className="w-10/12 bg-black/85 rounded-md">
+      <div className="w-full bg-black/85 rounded-md">
         <EditorHeader />
         <div className="w-full px-6 pt-6 pb-8 grid font-mono leading-5">
           <textarea

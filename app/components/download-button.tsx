@@ -18,9 +18,18 @@ const generateImage = async () => {
 
   if (width && height && height * (16 / 9) > width) {
     element.style.width = `${height * (16 / 9)}px`;
+    element.style.maxWidth = "none";
   }
 
   const result = await domToDataUrl(element, options);
+
+  if (width < 768) {
+    element.style.width = "100%";
+    element.style.maxWidth = "700px";
+  } else if (width < 1024) {
+    element.style.width = "100%";
+    element.style.maxWidth = "1000px";
+  }
 
   return result;
 };
