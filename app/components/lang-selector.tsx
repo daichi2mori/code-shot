@@ -8,12 +8,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useContext } from "react";
 import { bundledLanguagesInfo } from "shiki";
-import { LangContext } from "../providers/lang-provider";
+import { useLangSelector } from "../store/lang-store";
 
 const LangSelector = () => {
-  const { lang, setLang } = useContext(LangContext);
+  const lang = useLangSelector((state) => state.lang)
+  const setLang = useLangSelector((state) => state.setLang)
 
   return (
     <Select defaultValue={lang} onValueChange={(value) => setLang(value)}>

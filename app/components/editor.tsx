@@ -3,21 +3,19 @@
 import {
   type KeyboardEventHandler,
   useCallback,
-  useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
 import EditorHeader from "./editor-header";
-import { LangContext } from "../providers/lang-provider";
 import { codeToHtml } from "shiki/bundle/full";
-import { transformerLineNumbers } from "@/lib/shiki-line-number";
+import { useLangSelector } from "../store/lang-store";
 
 const Editor = () => {
   const [value, setValue] = useState("");
   const [html, setHtml] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const { lang } = useContext(LangContext);
+  const lang = useLangSelector((state) => state.lang)
 
   const handleHotKey: KeyboardEventHandler<HTMLTextAreaElement> = useCallback((e) => {
     const shiftKey = e.shiftKey;
