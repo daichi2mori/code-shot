@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils"
 
 const LangSelector = () => {
   const [open, setOpen] = useState(false)
+  const [value, setValue] = useState("TSX")
   const lang = useLangSelector((state) => state.lang)
   const setLang = useLangSelector((state) => state.setLang)
 
@@ -34,7 +35,7 @@ const LangSelector = () => {
         aria-expanded={open}
         className="w-[150px] justify-between rounded-full"
       >
-        {lang}
+        {value}
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
     </PopoverTrigger>
@@ -50,6 +51,7 @@ const LangSelector = () => {
                 value={item.id}
                 onSelect={(currentValue) => {
                   setLang(currentValue)
+                  setValue(item.name)
                   setOpen(false)
                 }}
               >
