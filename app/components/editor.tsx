@@ -10,7 +10,7 @@ import {
 } from "react";
 import EditorHeader from "./editor-header";
 import { LangContext } from "../providers/lang-provider";
-import { codeToHtml } from "shiki/bundle/web";
+import { codeToHtml } from "shiki/bundle/full";
 import { transformerLineNumbers } from "@/lib/shiki-line-number";
 
 const Editor = () => {
