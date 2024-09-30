@@ -10,7 +10,7 @@ const EditorHeader = () => {
         <div className="h-3 w-3 rounded-full bg-[#F3BF4F]"></div>
         <div className="h-3 w-3 rounded-full bg-[#61C554]"></div>
       </div>
-      <div className="flex items-center justify-center gap-3 hidden">
+      <div className="items-center justify-center gap-3 hidden">
         <Button variant="secondary" className="h-auto px-2 py-1 text-xs font-light">
           Select icon
         </Button>
